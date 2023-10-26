@@ -13,8 +13,6 @@ The plugin can be downloaded from the Releases tab: https://github.com/0xC000005
 2. Copy `SC4DisableCheats.dll` and `DisabledCheats.txt` into the Plugins folder in the SimCity 4 installation directory.
 3. Configure the cheats you want to disable, see the `Configuring the plugin` section.
 
-Copy `SC4DisableCheats.dll` and `DisabledCheats.txt` to the Plugins folder in the SimCity 4 installation directory.
-
 ## Configuring the plugin
 
 1. Open `DisabledCheats.txt` in a text editor (e.g. Notepad).    
