@@ -10,7 +10,7 @@ A DLL Plugin for SimCity 4 that allows players to control which cheats are enabl
 
 1. Close SimCity 4.
 2. Copy `SC4DisableCheats.dll` and `DisabledCheats.txt` into the Plugins folder in the SimCity 4 installation directory.
-3. Configure the cheats you want to disable, see the [Configuring the plugin](#Configuring the plugin) section.
+3. Configure the cheats you want to disable, see the `Configuring the plugin` section.
 
 Copy `SC4DisableCheats.dll` and `DisabledCheats.txt` to the Plugins folder in the SimCity 4 installation directory.
 
