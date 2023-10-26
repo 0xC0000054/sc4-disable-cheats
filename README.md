@@ -1,6 +1,7 @@
 # sc4-disable-cheats
 
-A DLL Plugin for SimCity 4 that allows players to control which cheats are enabled.
+A DLL Plugin for SimCity 4 that allows players to control which cheats are enabled.    
+The plugin can be downloaded from the Releases tab: https://github.com/0xC0000054/sc4-disable-cheats/releases
 
 ## System Requirements
 
