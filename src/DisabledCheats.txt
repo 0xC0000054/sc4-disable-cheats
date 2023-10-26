@@ -1,0 +1,4 @@
+; Lines starting with a semicolon are comments.
+; Each cheat code you want to disable should be on its own line, for example:
+; weaknesspays
+; you don't deserve it
