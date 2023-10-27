@@ -156,14 +156,14 @@ public:
 
 			if (logFile)
 			{
-				logFile << "Loaded " << DisabledCheatsFileName.data() << " with " << disabledCheatStrings.size() << " values." << std::endl;
+				logFile << "Loaded " << DisabledCheatsFileName << " with " << disabledCheatStrings.size() << " values." << std::endl;
 			}
 		}
 		else
 		{
 			if (logFile)
 			{
-				logFile << "Failed to open " << DisabledCheatsFileName.data() << std::endl;
+				logFile << "Failed to open " << DisabledCheatsFileName << std::endl;
 			}
 		}
 
@@ -250,7 +250,7 @@ private:
 
 	std::vector<std::string> disabledCheatStrings;
 	std::filesystem::path disabledCheatFilePath;
-	std::wofstream logFile;
+	std::ofstream logFile;
 };
 
 cRZCOMDllDirector* RZGetCOMDllDirector() {
