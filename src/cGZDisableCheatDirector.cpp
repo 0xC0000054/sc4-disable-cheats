@@ -31,7 +31,7 @@
 #include "wil/resource.h"
 #include "wil/filesystem.h"
 
-static constexpr uint32_t kGZMSG_CityInited = 0x26d31ec1;
+static constexpr uint32_t kSC4MessagePostCityInit = 0x26d31ec1;
 
 static constexpr uint32_t kDisableCheatPluginDirectorID = 0x2f4f8834;
 
@@ -71,7 +71,7 @@ public:
 		cIGZMessage2Standard* pStandardMsg = static_cast<cIGZMessage2Standard*>(pMessage);
 		uint32_t dwType = pMessage->GetType();
 
-		if (dwType == kGZMSG_CityInited)
+		if (dwType == kSC4MessagePostCityInit)
 		{
 			cISC4AppPtr pISC4App;
 			if (pISC4App)
@@ -122,7 +122,7 @@ public:
 				{
 					if (logFile)
 					{
-						logFile << "pCheatMgr was null." << std::endl;
+						logFile << "The cIGZCheatCodeManager pointer was null." << std::endl;
 					}
 				}
 			}
@@ -130,7 +130,7 @@ public:
 			{
 				if (logFile)
 				{
-					logFile << "pISC4App was null." << std::endl;
+					logFile << "cISC4AppPtr was null." << std::endl;
 				}
 			}
 		}
@@ -140,6 +140,29 @@ public:
 
 	bool PostAppInit()
 	{
+		cIGZMessageServer2Ptr pMsgServ;
+		if (pMsgServ)
+		{
+			// Subscribe for a notification when a city is being loaded.
+			// Most of the game's cheat codes are only registered at that stage.
+			if (!pMsgServ->AddNotification(this, kSC4MessagePostCityInit))
+			{
+				if (logFile)
+				{
+					logFile << "Failed to add the kSC4MessagePostCityInit notification." << std::endl;
+				}
+				return true;
+			}
+		}
+		else
+		{
+			if (logFile)
+			{
+				logFile << "cIGZMessageServer2Ptr was null." << std::endl;
+			}
+			return true;
+		}
+
 		std::ifstream disabledCheatsFile(disabledCheatFilePath.c_str());
 
 		if (disabledCheatsFile)
@@ -165,14 +188,6 @@ public:
 			{
 				logFile << "Failed to open " << DisabledCheatsFileName << std::endl;
 			}
-		}
-
-		cIGZMessageServer2Ptr pMsgServ;
-		if (pMsgServ)
-		{
-			// Subscribe for a notification when a city is being loaded.
-			// Most of the game's cheat codes are only registered at that stage.
-			pMsgServ->AddNotification(this, kGZMSG_CityInited);
 		}
 
 		return true;
