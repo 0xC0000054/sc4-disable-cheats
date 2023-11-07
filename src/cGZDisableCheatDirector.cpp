@@ -171,7 +171,7 @@ public:
 			while (std::getline(disabledCheatsFile, value))
 			{
 				// Lines starting with a semicolon are comments.
-				if (value[0] != ';')
+				if (value.size() > 0 && value[0] != ';')
 				{
 					disabledCheatStrings.push_back(value);
 				}
