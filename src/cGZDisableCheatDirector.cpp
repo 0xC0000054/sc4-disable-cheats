@@ -228,6 +228,7 @@ private:
 			cheatStringCount = static_cast<uint32_t>(cheatStrings.size());
 
 			// Call GetListOfAllCheatStrings a second time to fill the cheat string array.
+			// The returned strings are read-only, calling cIGZString::Release will cause a crash.
 			int cheatsReturned = pCheatMgr->GetListOfAllCheatStrings(cheatStrings.data(), cheatStringCount);
 
 			if (cheatsReturned > 0)
@@ -237,11 +238,6 @@ private:
 					cIGZString* str = cheatStrings[i];
 
 					PrintLineToDebugOutput(str->ToChar());
-
-					// SC4 encounters a heap corruption crash when releasing some of the strings.
-					// Not freeing the string may cause a memory leak, but it doesn't matter as
-					// this code only runs in debug builds.
-					//str->Release();
 				}
 			}
 		}
