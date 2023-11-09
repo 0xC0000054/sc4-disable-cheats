@@ -207,6 +207,13 @@ public:
 				PreAppInit();
 			}
 		}
+		else
+		{
+			if (logFile)
+			{
+				logFile << "RZGetFrameWork returned null." << std::endl;
+			}
+		}
 
 		return true;
 	}
